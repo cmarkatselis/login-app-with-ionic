@@ -6,27 +6,48 @@
 
 <ion-content>
 
-  <ion-card>
+  <ion-card class="ion-no-margin">
     <ion-img src="assets/images/header.png"></ion-img>
     <ion-card-header>
       <ion-card-title>
         <ion-img src="assets/logo/logo-color.png"></ion-img>
         Welcome
       </ion-card-title>
-      <ion-card-subtitle>
+      <ion-card-subtitle class="ion-text-lowercase">
         Plan your dream travel and meet your dream companion
       </ion-card-subtitle>
     </ion-card-header>
 
     <ion-card-content>
-      <div class="sign-in-btns">
-        <ion-button fill="solid" class="log-in-btn" shape="round">
+      <div class="sign-in-buttons">
+        <ion-button size="small" fill="solid" class="log-in-btn" shape="round"
+                    [routerLink]="['/login-screen']">
           Login
         </ion-button>
-        <ion-button fill="outline" color="dark" shape="round">
+        <ion-button size="small" fill="outline" color="dark" shape="round">
           Sign Up
         </ion-button>
       </div>
+
+      <div class="text-tag">
+        <span>
+          Or via Social
+        </span>
+      </div>
+
+      <div class="social-buttons">
+        <ion-button fill="clear" class="facebook-btn ion-no-padding">
+          <ion-img src="assets/images/facebook.png"></ion-img>
+        </ion-button>
+        <ion-button fill="clear" class="google-btn ion-no-padding">
+          <ion-img src="assets/images/google.png"></ion-img>
+        </ion-button>
+        <ion-button fill="clear" class="apple-btn ion-no-padding">
+          <ion-img src="assets/images/apple.png"></ion-img>
+        </ion-button>
+
+      </div>
+
     </ion-card-content>
   </ion-card>
 

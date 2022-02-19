@@ -1,0 +1,59 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+<!--    <ion-title>login-screen</ion-title>-->
+  </ion-toolbar>
+  <ion-buttons slot="start">
+    <ion-back-button defaulthref="login" text="Login"></ion-back-button>
+  </ion-buttons>
+</ion-header>
+
+<ion-content>
+
+  <ion-card class="ion-no-margin">
+
+    <ion-img src="assets/images/header1.png"></ion-img>
+
+  </ion-card>
+
+  <ion-card-content>
+
+    <div class="wrap-form">
+
+      <ion-item>
+        <ion-input name="email" [(NgModel)]="email" placeholder="Email" type="text">
+          <ion-icon name="mail-outline"></ion-icon>
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input name="password" [(NgModel)]="password" placeholder="Password" type="password">
+          <ion-icon name="lock-closed-outline"></ion-icon>
+        </ion-input>
+      </ion-item>
+
+    </div>
+
+    <div class="password-forgot">
+      <ion-button fill="clear" class="ion-no-padding">Forgot Password?</ion-button>
+    </div>
+
+    <div class="sing-button-wrap">
+      <ion-button shape="round" fill="solid" class="sing-button">Login</ion-button>
+    </div>
+
+    <div class="social-buttons">
+      <ion-button fill="clear" class="facebook-btn ion-no-padding">
+        <ion-img src="assets/images/facebook.png"></ion-img>
+      </ion-button>
+      <ion-button fill="clear" class="google-btn ion-no-padding">
+        <ion-img src="assets/images/google.png"></ion-img>
+      </ion-button>
+      <ion-button fill="clear" class="apple-btn ion-no-padding">
+        <ion-img src="assets/images/apple.png"></ion-img>
+      </ion-button>
+
+    </div>
+
+  </ion-card-content>
+
+</ion-content>
