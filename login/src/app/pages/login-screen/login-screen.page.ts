@@ -2,8 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {NavController} from "@ionic/angular";
-import {AuthService} from "../../services/auth.service";
-import {StorageService} from "../../services/storage.service";
+import {AuthService} from "../../services/auth-service/auth.service";
+import {StorageService} from "../../services/storage-service/storage.service";
 import {AuthConstants} from "../../config/auth-constants";
 
 @Component({
