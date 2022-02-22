@@ -1,0 +1,6 @@
+{
+	"appId": "com.travelDash.app",
+	"appName": "Travel Dash",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}
