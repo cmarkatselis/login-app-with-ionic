@@ -12,11 +12,11 @@ const routes: Routes = [
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   },
   {
-    path: 'singup',
+    path: 'sing-up',
     loadChildren: () => import('./pages/singup/singup.module').then( m => m.SingupPageModule)
   },
   {
-    path: 'forgotpassword',
+    path: 'forgot-password',
     loadChildren: () => import('./pages/forgotpassword/forgotpassword.module').then( m => m.ForgotpasswordPageModule)
   },
   {

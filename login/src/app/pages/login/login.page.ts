@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {NavController} from "@ionic/angular";
 
 @Component({
   selector: 'app-login',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginPage implements OnInit {
 
-  constructor() { }
+  constructor(private nav: NavController) { }
 
   ngOnInit() {
   }
+
+  gotoLoginPage(){
+    this.nav.navigateForward(['login-screen']).then(r => console.log(r));
+  }
+
+  registerUser(){
+    this.nav.navigateForward(['sign-up']).then(r => console.log(r));
+  }
+
 
 }
