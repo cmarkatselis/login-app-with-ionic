@@ -5,6 +5,7 @@ import {NavController} from "@ionic/angular";
 import {AuthService} from "../../services/auth-service/auth.service";
 import {StorageService} from "../../services/storage-service/storage.service";
 import {AuthConstants} from "../../config/auth-constants";
+import {ToastService} from "../../services/toast-service/toast.service";
 
 @Component({
   selector: 'app-login-screen',
@@ -31,6 +32,7 @@ export class LoginScreenPage implements OnInit {
               private authService: AuthService,
               private storageService: StorageService,
               private router: Router,
+              private toastService: ToastService,
               private nav: NavController) { }
 
   ngOnInit() {
@@ -45,7 +47,7 @@ export class LoginScreenPage implements OnInit {
       ])),
       password: new FormControl('', Validators.compose([
         Validators.required,
-        Validators.minLength(5)
+        Validators.minLength(8)
       ]))
     })
 
@@ -55,17 +57,28 @@ export class LoginScreenPage implements OnInit {
     console.log(this.validationFormUser.value);
     if (this.validationFormUser.value) {
       this.authService.logIn(this.validationFormUser.value).subscribe((res: any) => {
+        console.log(res);
         if (res.token) {
           this.storageService.store(AuthConstants.AUTH, res.token);
           this.router.navigate(['home']);
         } else {
-          console.log('Incorrect username or password');
+          this.toastService.presentToast('Incorrect username or password');
         }
       },
         ((error: any) => {
-          console.log('Network connection error');
+          this.toastService.presentToastWithOptions('','Network connection error', 'warning', 'information-circle', 'top', 2000);
         })
       );
+    } else {
+      this.toastService.presentToast('Please give some information');
     }
+  }
+
+  registerUser(){
+    this.nav.navigateForward(['sign-up']).then(r => console.log(r));
+  }
+
+  forgotPassword(){
+    this.nav.navigateForward(['forgot-password']).then(r => console.log(r));
   }
 }

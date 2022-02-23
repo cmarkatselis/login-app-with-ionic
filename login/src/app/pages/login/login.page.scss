@@ -42,6 +42,10 @@ ion-card-subtitle{
   --ion-color-primary: #215AB7;
 }
 
+.text-transform-none {
+  text-transform: none !important;
+}
+
 .text-tag {
   margin-top: 40px;
   text-align: center;
@@ -56,6 +60,7 @@ ion-card-subtitle{
   margin-top: 20px;
   text-align: center;
   ion-button{
+    text-transform: none !important;
     width: 30px;
     padding-left: 5px !important;
   }

@@ -20,6 +20,10 @@ import {ShowHidePasswordComponent} from "./show-hide-password/show-hide-password
   declarations: [
     LoginScreenPage,
     ShowHidePasswordComponent
+  ],
+  exports: [
+    ShowHidePasswordComponent
   ]
+
 })
 export class LoginScreenPageModule {}

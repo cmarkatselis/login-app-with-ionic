@@ -1,0 +1,169 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <!-- <ion-title>signup</ion-title> -->
+    <ion-buttons slot="start">
+      <ion-back-button defaulthref="login" text="">
+      </ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content class="bg-color">
+
+  <ion-card class="ion-no-margin">
+
+    <ion-card-header>
+      <ion-card-title>
+        Register
+      </ion-card-title>
+      <ion-card-subtitle>
+        Create Your account by filling
+        up the form
+      </ion-card-subtitle>
+    </ion-card-header>
+    <form [formGroup]="ValidationFormUSer">
+      <ion-card-content>
+
+        <!-- FIRST NAME ITEM -->
+        <ion-item>
+          <ion-input [class.ion-invalid]="ValidationFormUSer.get('firstName').hasError('required') && (ValidationFormUSer.get('firstName').dirty || ValidationFormUSer.get('firstName').touched)"
+                     name="firstName" type="text" placeholder="Fist Name" formControlName="firstName">
+            <ion-icon name="person-outline" ></ion-icon>
+          </ion-input>
+        </ion-item>
+        <!-- FIRST NAME DIV FOR ERROR DISPLAY -->
+        <div>
+          <ng-container *ngFor="let validation of validationMessages.firstName">
+
+            <div class="error_message" *ngIf="ValidationFormUSer.get('firstName').hasError(validation.type) && (ValidationFormUSer.get('firstName').dirty || ValidationFormUSer.get('firstName').touched)">
+              {{validation.message}}
+            </div>
+
+          </ng-container>
+
+        </div>
+
+        <!-- LAST NAME ITEM -->
+        <ion-item>
+          <ion-input name="firstName" type="text" placeholder="Last Name" formControlName="lastName">
+            <ion-icon name="person-outline" ></ion-icon>
+          </ion-input>
+        </ion-item>
+        <!-- LAST NAME DIV FOR ERROR DISPLAY -->
+        <div>
+          <ng-container *ngFor="let validation of validationMessages.lastName">
+
+            <div class="error_message" *ngIf="ValidationFormUSer.get('lastName').hasError(validation.type) && (ValidationFormUSer.get('lastName').dirty || ValidationFormUSer.get('lastName').touched)">
+              {{validation.message}}
+            </div>
+
+          </ng-container>
+
+        </div>
+
+        <!-- PHONE ITEM -->
+<!--        <ion-item>-->
+<!--          <ion-input name="phone" type="text" placeholder="Phone No." formControlName="phone">-->
+<!--            <ion-icon name="call-outline" ></ion-icon>-->
+<!--          </ion-input>-->
+<!--        </ion-item>-->
+        <!-- PHONE DIV FOR ERROR DISPLAY -->
+<!--        <div>-->
+<!--          <ng-container *ngFor="let validation of validationMessages.phone">-->
+
+<!--            <div class="error_message" *ngIf="ValidationFormUSer.get('phone').hasError(validation.type) && (ValidationFormUSer.get('phone').dirty || ValidationFormUSer.get('phone').touched)">-->
+<!--              {{validation.message}}-->
+<!--            </div>-->
+
+<!--          </ng-container>-->
+
+<!--        </div>-->
+
+        <!-- EMAIL ITEM -->
+        <ion-item>
+          <ion-input name="email" type="text" placeholder="Email" formControlName="email">
+            <ion-icon name="mail-outline" ></ion-icon>
+          </ion-input>
+        </ion-item>
+        <!-- EMAIL DIV FOR ERROR DISPLAY -->
+        <div>
+          <ng-container *ngFor="let validation of validationMessages.email">
+
+            <div class="error_message" *ngIf="ValidationFormUSer.get('email').hasError(validation.type) && (ValidationFormUSer.get('email').dirty || ValidationFormUSer.get('email').touched)">
+              {{validation.message}}
+            </div>
+
+          </ng-container>
+        </div>
+
+        <!-- PASSWORD ITEM -->
+        <ion-item>
+          <app-show-hide-password>
+            <ion-input name="password" type="password" placeholder="Password" formControlName="password">
+              <ion-icon name="lock-closed" ></ion-icon>
+            </ion-input>
+          </app-show-hide-password>
+        </ion-item>
+        <!-- PASSWORD DIV FOR ERROR DISPLAY -->
+        <div>
+          <ng-container *ngFor="let validation of validationMessages.password">
+
+            <div class="error_message" *ngIf="ValidationFormUSer.get('password').hasError(validation.type) && (ValidationFormUSer.get('password').dirty || ValidationFormUSer.get('password').touched)">
+              {{validation.message}}
+            </div>
+
+          </ng-container>
+        </div>
+
+        <!-- CONFIRM PASSWORD ITEM -->
+        <ion-item>
+          <app-show-hide-password>
+            <ion-input name="confirmPassword" type="password" placeholder="Confirm password" formControlName="confirmPassword">
+              <ion-icon name="lock-closed" ></ion-icon>
+            </ion-input>
+          </app-show-hide-password>
+        </ion-item>
+        <!-- CONFIRM PASSWORD DIV FOR ERROR DISPLAY -->
+        <div>
+          <ng-container *ngFor="let validation of validationMessages.confirmPassword">
+
+            <div class="error_message" *ngIf="ValidationFormUSer.get('confirmPassword').hasError(validation.type) && (ValidationFormUSer.get('confirmPassword').dirty || ValidationFormUSer.get('confirmPassword').touched)">
+              {{validation.message}}
+            </div>
+
+          </ng-container>
+        </div>
+
+        <!-- PASSWORD AND CONFIRM PASSWORD DON'T MATCH ERROR -->
+        <div class="error_message" *ngIf="!ValidationFormUSer.get('confirmPassword').errors && ValidationFormUSer.hasError('passwordNotMatch') && (ValidationFormUSer.get('confirmPassword').dirty || ValidationFormUSer.get('confirmPassword').touched)">
+          Password and Confirm Password fields should match
+        </div>
+
+        <div class="sign-btn-wrap">
+          <ion-button  shape="round" type="submit"  fill="solid" class="sign-btn" [disabled]="!ValidationFormUSer.valid"
+                       (click)="registerUser(ValidationFormUSer.value)">Register</ion-button>
+        </div>
+
+        <div class="text-tag">
+          <span>Sign Up with</span>
+        </div>
+
+        <div class="social-btns">
+          <ion-button fill="clear"  class="facebookbtn ion-no-padding">
+            <ion-img src="assets/images/facebook.png"></ion-img>
+          </ion-button>
+          <ion-button fill="clear"  class="googlebtn ion-no-padding">
+            <ion-img src="assets/images/google.png"></ion-img>
+          </ion-button>
+          <ion-button fill="clear"  class="applebtn ion-no-padding">
+            <ion-img src="assets/images/apple.png"></ion-img>
+          </ion-button>
+
+        </div>
+
+      </ion-card-content>
+    </form>
+  </ion-card>
+
+</ion-content>

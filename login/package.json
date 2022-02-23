@@ -9,7 +9,14 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "ionic-build": "ionic build --prod",
+    "ios-add": "ionic capacitor add ios",
+    "android-add": "ionic capacitor add android",
+    "ios-copy": "ionic capacitor copy ios",
+    "android-copy": "ionic capacitor copy android",
+    "ios-open": "ionic capacitor open ios",
+    "android-open": "ionic capacitor open android"
   },
   "private": true,
   "dependencies": {

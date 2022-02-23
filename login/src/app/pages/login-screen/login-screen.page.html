@@ -44,10 +44,10 @@
 
         </div>
         <div class="password-forgot">
-          <ion-button fill="clear" class="ion-no-padding">ForgotPassword?</ion-button>
+          <ion-button fill="clear" class="ion-no-padding " (click)="forgotPassword()">Forgot Password?</ion-button>
         </div>
         <div class="sing-button-wrap">
-          <ion-button  shape="round" type="submit"  fill="solid" class="sign-btn" [disabled]="!validationFormUser.valid" (click)="loginAction()" >Login</ion-button>
+          <ion-button  shape="round" type="submit"  fill="solid" class="sing-button" [disabled]="!validationFormUser.valid" (click)="loginAction()" >Login</ion-button>
         </div>
 
         <div class="text-tag">
@@ -77,7 +77,7 @@
 
 
   <div class="ion-card-footer">
-    <span>Don’t have an account?</span><button class="ion-no-padding" >Sign Up</button>
+    <span>Don’t have an account?</span><button class="ion-no-padding" (click)="registerUser()">Register</button>
   </div>
 
 

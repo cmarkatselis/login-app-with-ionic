@@ -1,0 +1,13 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>settings</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    token: {{displayUserData?.token}}
+  </ion-item>
+
+  <ion-button color="primary" (click)="logOutAction()">Log Out</ion-button>
+</ion-content>
