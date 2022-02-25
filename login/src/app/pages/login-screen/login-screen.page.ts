@@ -54,12 +54,10 @@ export class LoginScreenPage implements OnInit {
   }
 
    loginAction(): void {
-    console.log(this.validationFormUser.value);
     if (this.validationFormUser.value) {
       this.authService.logIn(this.validationFormUser.value).subscribe((res: any) => {
-        console.log(res);
-        if (res.token) {
-          this.storageService.store(AuthConstants.AUTH, res.token);
+        if (res.jwt) {
+          this.storageService.storeToken(res.jwt);
           this.router.navigate(['home']);
         } else {
           this.toastService.presentToast('Incorrect username or password');

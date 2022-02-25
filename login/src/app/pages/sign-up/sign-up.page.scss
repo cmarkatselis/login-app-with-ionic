@@ -23,7 +23,7 @@ ion-card{
 }
 
 ion-card-title{
-  margin-top: 50px !important;
+  margin-top: 30px !important;
   font-size: 25px;
   color: #53565A;
   font-weight: 600;
@@ -44,6 +44,7 @@ ion-card-subtitle{
 ion-card-content{
   padding-top: 30px;
 }
+
 ion-item{
   color:#74787E;
   --border-color:#D4D7DB;
@@ -63,11 +64,9 @@ ion-item{
       font-size: 18px;
     }
   }
-
   ion-input:hover{
     color:#215AB7;
   }
-
 }
 
 .sign-btn-wrap{
@@ -82,6 +81,7 @@ ion-item{
     color:#F4F6FA;
     background-color: #215AB7;
     border-radius: 25px;
+    text-transform: none !important;
 
   }
 }
@@ -111,3 +111,31 @@ ion-item{
   color: red;
 }
 
+.terms-and-condition-wrap{
+  margin-top: 15px;
+  overflow: hidden;
+  font-size: 12px;
+
+  .terms-and-condition-label {
+    a:hover{
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  }
+
+  .terms-and-condition-checkbox {
+    margin-left: 15px;
+    width: 15px;
+    height: 15px;
+    .checkbox-icon {
+      border-radius: unset !important;
+    }
+    .ion-checkbox .ion-checkbox-icon {
+      border-radius: unset !important;
+    }
+  }
+
+}
+
+.ion-checkbox .ion-checkbox-icon {
+}

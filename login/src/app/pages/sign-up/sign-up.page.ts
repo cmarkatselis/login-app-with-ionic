@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
-import {AlertController, LoadingController, NavController} from "@ionic/angular";
+import {AlertController, LoadingController, ModalController, NavController} from "@ionic/angular";
+import {TermsAndConditionPage} from "../terms-and-condition/terms-and-condition.page";
+import {AuthService} from "../../services/auth-service/auth.service";
+import {AuthConstants} from "../../config/auth-constants";
+import {ToastService} from "../../services/toast-service/toast.service";
 
 @Component({
   selector: 'app-sign-up',
@@ -19,25 +23,33 @@ export class SignUpPage implements OnInit {
       {type:"pattern", message:"Please the Email Entered is Incorrect. Try again!"}
     ],
     password: [
-      {type: "required", message: "password is required here"},
+      {type: "required", message: "Password is required"},
       {type: "minlength", message: "Password must be at least 8 character"},
       {type: "pattern", message: "Password must contain at least one special character, one uppercase character, one lowercase character and one numeric value"}
     ],
     confirmPassword: [
-      {type: "required", message: "Confirm password is required here"},
+      {type: "required", message: "Confirm password is required"},
       {type: "minlength", message: "Password must be at least 8 character"},
       {type: "pattern", message: "Confirm password must contain at least one special character, one uppercase character, one lowercase character and one numeric value"}
+    ],
+    termsAndCondition: [
+      {type: "required", message: "You must accept our Terms and Conditions"}
     ]
   }
 
   ValidationFormUSer : FormGroup;
   loading:any;
 
+  modalDataResponse: any;
+
   constructor(private router: Router,
               private navCtrl: NavController,
               private formBuilder: FormBuilder,
+              public modalCtrl: ModalController,
               public loadingCtrl : LoadingController,
-              private alertCtrl: AlertController) { }
+              private alertCtrl: AlertController,
+              private authService: AuthService,
+              private toastService: ToastService) { }
 
   ngOnInit() {
     this.createForm();
@@ -72,7 +84,13 @@ export class SignUpPage implements OnInit {
         Validators.required,
         Validators.minLength(8),
         Validators.pattern('(?=^.{1,}$)(?=.*\\d)(?=.*[!@#$%^&*]+)(?![.\\n])(?=.*[A-Z])(?=.*[a-z]).*$')
-      ]))
+      ])),
+
+      termsAndCondition: new FormControl(null, Validators.compose([
+        Validators.required
+      ])),
+
+      type: new FormControl(null)
 
     }, {
       validators: this.password.bind(this)
@@ -85,7 +103,36 @@ export class SignUpPage implements OnInit {
     return password === confirmPassword ? null : { passwordNotMatch: true };
   }
 
-  registerUser(value: any) {
+  registerUser() {
+    this.ValidationFormUSer.controls.type.setValue('CUSTOM');
+    this.authService.register(this.ValidationFormUSer.value).subscribe((res: any) => {
+        if (res === null) {
+          this.toastService.presentToast('Successful register.');
+          this.router.navigate(['']);
+        } else {
+          this.toastService.presentToast('Something went wrong, fill again.');
+        }
+      },
+      ((error: any) => {
+        this.toastService.presentToastWithOptions('','Network connection error', 'warning', 'information-circle', 'top', 2000);
+      })
+    );
+  }
 
+  async  openTermsAndConditionModal() {
+    const modal = await this.modalCtrl.create({
+      component: TermsAndConditionPage,
+      componentProps: {
+        'name': 'The Winter Soldier'
+      }
+    });
+
+    modal.onDidDismiss().then((modalDataResponse) => {
+      if (modalDataResponse !== null) {
+        this.modalDataResponse = modalDataResponse.data;
+      }
+    });
+
+    return await modal.present();
   }
 }

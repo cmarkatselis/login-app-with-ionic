@@ -17,7 +17,7 @@ export class AuthService {
               private router: Router) { }
 
   getUserData() {
-    this.storageService.get(AuthConstants.AUTH).then(res => {
+    this.storageService.getToken().then(res => {
       console.log(res);
       this.userData$.next(res);
     });
@@ -25,11 +25,12 @@ export class AuthService {
 
   logIn(postData: any): Observable<any>{
     console.log(postData);
-    return this.httpService.post('authenticate/el', postData);
+    return this.httpService.post('authenticate', postData);
   }
 
-  signUp(postData: any): Observable<any>{
-    return this.httpService.post('login', postData);
+  register(postData: any): Observable<any>{
+    console.log(postData);
+    return this.httpService.post('register', postData);
   }
 
   logOut() {

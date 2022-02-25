@@ -1,0 +1,29 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <!-- <ion-title>Terms And Conditions</ion-title> -->
+    <ion-buttons slot="start">
+      <ion-back-button defaulthref="login" text="">
+      </ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content class="bg-color">
+
+  <ion-card class="ion-no-margin">
+
+    <ion-card-header>
+      <ion-card-title>
+        <div>Terms And Conditions <ion-icon name="close" (click)="close()"></ion-icon></div>
+      </ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      {{ name }}
+    </ion-card-content>
+
+  </ion-card>
+
+</ion-content>
+

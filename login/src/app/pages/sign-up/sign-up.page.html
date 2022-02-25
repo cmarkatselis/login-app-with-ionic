@@ -18,8 +18,7 @@
         Register
       </ion-card-title>
       <ion-card-subtitle>
-        Create Your account by filling
-        up the form
+        Create your account
       </ion-card-subtitle>
     </ion-card-header>
     <form [formGroup]="ValidationFormUSer">
@@ -140,13 +139,30 @@
           Password and Confirm Password fields should match
         </div>
 
+        <!-- TERMS AND CONDITIONS SECTION-->
+        <div class="terms-and-condition-wrap">
+
+          <ion-label class="terms-and-condition-label">I agree to the <a (click)="openTermsAndConditionModal()">terms and conditions</a></ion-label>
+          <ion-checkbox class="terms-and-condition-checkbox" formControlName="termsAndCondition" color="primary"></ion-checkbox>
+
+          <!-- TERMS AND CONDITIONS DIV FOR ERROR DISPLAY -->
+          <div *ngFor="let validation of validationMessages.termsAndCondition">
+            <div class="error_message" *ngIf="ValidationFormUSer.get('termsAndCondition').hasError(validation.type) && (ValidationFormUSer.get('termsAndCondition').dirty || ValidationFormUSer.get('termsAndCondition').touched)">
+              {{validation.message}}
+            </div>
+            <div class="error_message" *ngIf="ValidationFormUSer.get('termsAndCondition').value === false && (ValidationFormUSer.get('termsAndCondition').dirty || ValidationFormUSer.get('termsAndCondition').touched)">
+              {{validation.message}}
+            </div>
+          </div>
+        </div>
+
         <div class="sign-btn-wrap">
-          <ion-button  shape="round" type="submit"  fill="solid" class="sign-btn" [disabled]="!ValidationFormUSer.valid"
-                       (click)="registerUser(ValidationFormUSer.value)">Register</ion-button>
+          <ion-button  shape="round" type="submit"  fill="solid" class="sign-btn" [disabled]="ValidationFormUSer.invalid && (ValidationFormUSer.get('termsAndCondition').value === null || ValidationFormUSer.get('termsAndCondition').value === false)"
+                       (click)="registerUser()">Register</ion-button>
         </div>
 
         <div class="text-tag">
-          <span>Sign Up with</span>
+          <span>Register with</span>
         </div>
 
         <div class="social-btns">

@@ -11,8 +11,11 @@ export class HttpService {
 
   post(serviceName: string, data: any){
 
-    const headers = new HttpHeaders();
-    const options = {header: headers, withCredentials: false};
+
+    const options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })};
     const url = environment.apiUrl + serviceName;
     console.log('calling url', url);
 

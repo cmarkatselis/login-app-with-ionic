@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://samii.solcrowe.gr/sam-0.0.1-SNAPSHOT/'
+  // apiUrl: 'https://samii.solcrowe.gr/sam-0.0.1-SNAPSHOT/'
+  apiUrl: 'http://10.0.120.53:9085/travel_dash/auth/api/' // andreas server
 };
 
 /*

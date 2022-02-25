@@ -14,7 +14,8 @@ export class HomeGuard implements CanActivate {
 
   canActivate(): Promise<boolean> {
     return new Promise(resolve => {
-      this.storageService.get(AuthConstants.AUTH).then(res => {
+      this.storageService.getToken().then(res => {
+        console.log(res);
         if (res) {
           resolve(true);
         } else {
