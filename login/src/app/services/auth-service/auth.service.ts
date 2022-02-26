@@ -3,7 +3,6 @@ import {HttpService} from "../http-service/http.service";
 import {StorageService} from "../storage-service/storage.service";
 import {Router} from "@angular/router";
 import {BehaviorSubject, Observable} from "rxjs";
-import {AuthConstants} from "../../config/auth-constants";
 
 @Injectable({
   providedIn: 'root'
@@ -18,23 +17,23 @@ export class AuthService {
 
   getUserData() {
     this.storageService.getToken().then(res => {
-      console.log(res);
+      // console.log(res);
       this.userData$.next(res);
     });
   }
 
   logIn(postData: any): Observable<any>{
-    console.log(postData);
+    // console.log(postData);
     return this.httpService.post('authenticate', postData);
   }
 
   register(postData: any): Observable<any>{
-    console.log(postData);
+    // console.log(postData);
     return this.httpService.post('register', postData);
   }
 
   logOut() {
-    this.storageService.removeItem(AuthConstants.AUTH).then(res => {
+    this.storageService.removeItem('token').then(res => {
       this.router.navigate(['']);
     });
   }

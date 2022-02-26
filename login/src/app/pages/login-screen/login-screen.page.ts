@@ -4,7 +4,6 @@ import {Router} from "@angular/router";
 import {NavController} from "@ionic/angular";
 import {AuthService} from "../../services/auth-service/auth.service";
 import {StorageService} from "../../services/storage-service/storage.service";
-import {AuthConstants} from "../../config/auth-constants";
 import {ToastService} from "../../services/toast-service/toast.service";
 
 @Component({
@@ -57,8 +56,9 @@ export class LoginScreenPage implements OnInit {
     if (this.validationFormUser.value) {
       this.authService.logIn(this.validationFormUser.value).subscribe((res: any) => {
         if (res.jwt) {
-          this.storageService.storeToken(res.jwt);
-          this.router.navigate(['home']);
+          this.storageService.setKeyToStorage('token', res.body.jwt);
+          this.router.navigate(['tabs']);
+          this.toastService.presentToast(res.metadata.message);
         } else {
           this.toastService.presentToast('Incorrect username or password');
         }

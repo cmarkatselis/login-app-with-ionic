@@ -4,7 +4,6 @@ import {Router} from "@angular/router";
 import {AlertController, LoadingController, ModalController, NavController} from "@ionic/angular";
 import {TermsAndConditionPage} from "../terms-and-condition/terms-and-condition.page";
 import {AuthService} from "../../services/auth-service/auth.service";
-import {AuthConstants} from "../../config/auth-constants";
 import {ToastService} from "../../services/toast-service/toast.service";
 
 @Component({
